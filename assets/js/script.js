@@ -8,16 +8,45 @@ $(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+  var rootEl = $('.container-fluid');
+  var currentDay = dayjs().day() // gets day of current week;
+  var currentHour = dayjs().hour() // gets current hour';
+  console.log(currentHour);
+  console.log(currentDay);
+  
   var hoursCalendarDay = [
-    'Select',
-    'Create',
-    'Style',
-    'Animate',
-    'Traverse',
-    'Event Listen',
-    'much more',
+    '9:00 am',
+    '10:00 am',
+    '11:00 am',
+    '12:00 pm',
+    '01:00 pm',
+    '02:00 pm',
+    '03:00 pm',
+    '04:00 pm',
+    '05:00 pm'
   ];
 
+  for (var i = 0; i < hoursCalendarDay.length; i++) {
+    // Create a new `<div>` for each ability and its text content
+    var rowdiv = $('<div>');
+    var textHour = $('<div>');
+    var textArea = $('<textarea>');
+    var buttons =  $('<button>')
+    rowdiv.addClass('row time-block past');
+    rowdiv.attr('id', 'hour-'+i);
+    rootEl.append(rowdiv);
+    textHour.addClass('col-2 col-md-1 hour text-center py-3');
+    textHour.text(hoursCalendarDay[i]);
+    rowdiv.append(textHour);
+    textArea.addClass('col-8 col-md-10 description');
+    textArea.attr('rows', '3');
+    rowdiv.append(textArea);
+    buttons.addClass('btn saveBtn col-2 col-md-1');
+    buttons.attr('aria-label', 'save');
+    buttons.html('<i class="fas fa-save" aria-hidden="true"></i>');
+    rowdiv.append(buttons);
+
+  }
   var hourDay = dayjs().format('H');
   //
   // TODO: Add code to apply the past, present, or future class to each time
