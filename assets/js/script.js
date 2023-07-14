@@ -12,7 +12,7 @@ $(function () {
 
   var currentDay = dayjs().format('MMMM dddd D, YYYY'); // gets day of current week;
   var currentHour = dayjs().hour(); // gets current hour';
-  var currentHour = 11;
+  //var currentHour = 11;
   console.log(currentHour);
   //console.log(currentDay);
   
