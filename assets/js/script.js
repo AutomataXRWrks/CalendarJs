@@ -62,9 +62,11 @@ $(function () {
     rowdiv.append(textHour);
     textArea.addClass('col-8 col-md-10 description');
     textArea.attr('rows', '3');
+    textArea.attr('id', 'textcontentN'+i)
     rowdiv.append(textArea);
     buttons.addClass('btn saveBtn col-2 col-md-1');
     buttons.attr('aria-label', 'save');
+    //buttons.attr('id', 'buttonN'+i)
     buttons.html('<i class="fas fa-save" aria-hidden="true"></i>');
     rowdiv.append(buttons);
 
@@ -88,6 +90,22 @@ $(function () {
   }
 
 
+  var memoryDailyCalendar = [];
+
+
+
+$('.saveBtn').on('click', function(event){
+//  event.preventDefault();
+
+  //var t1 = $('')
+  //var textDivs = [t1,t2,t3,t4,t5,t6,t7,t8,t9]
+//console.log(event.target.attributes.id.nodeValue);
+console.log(event.target.parentNode.childNodes[1].value);
+//if(event.target.attributes.id.nodeValue)
+memoryDailyCalendar.push(event.target.parentNode.childNodes[1].value);
+localStorage.setItem("dayMemory",JSON.stringify(memoryDailyCalendar));
+
+});
 
 
 
