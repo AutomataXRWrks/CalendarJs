@@ -115,11 +115,14 @@ var htmlMemory = JSON.parse(localStorage.getItem("htmlEl"));
 //console.log(contentMemory);
 
 $( document ).ready(function() {
-  for (c = 0; c < memoryDailyCalendar.length; c++){
-    var htmlMemory = JSON.parse(localStorage.getItem("htmlEl"));
-    var contentMemory = JSON.parse(localStorage.getItem("dayMemory"));
-    //htmlMemory[c].text(contentMemory);
-    console.log ('s');
+  var htmlMemory = JSON.parse(localStorage.getItem("htmlEl"));
+  var contentMemory = JSON.parse(localStorage.getItem("dayMemory"));
+  memoryDailyCalendar.push(contentMemory);
+  htmlElementCalendar.push(htmlMemory);
+  for (c = 0; c < 8; c++){
+    $(htmlMemory[c]).text(contentMemory[c]);
+    console.log( $(htmlMemory[c]).text(contentMemory[c]));
+
   }
   console.log('ready');
 });
