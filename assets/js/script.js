@@ -13,7 +13,7 @@ $(function () {
   var currentDay = dayjs().format('MMMM dddd D, YYYY'); // gets day of current week;
   var currentHour = dayjs().hour(); // gets current hour';
   //var currentHour = 11;
-  console.log(currentHour);
+  //console.log(currentHour);
   //console.log(currentDay);
   
 
@@ -91,6 +91,7 @@ $(function () {
 
 
   var memoryDailyCalendar = [];
+  var htmlElementCalendar = [];
 
 
 
@@ -100,13 +101,28 @@ $('.saveBtn').on('click', function(event){
   //var t1 = $('')
   //var textDivs = [t1,t2,t3,t4,t5,t6,t7,t8,t9]
 //console.log(event.target.attributes.id.nodeValue);
-console.log(event.target.parentNode.childNodes[1].value);
+//console.log(event.target.parentNode.childNodes[1].value);
 //if(event.target.attributes.id.nodeValue)
 memoryDailyCalendar.push(event.target.parentNode.childNodes[1].value);
+htmlElementCalendar.push(event.target.parentNode.childNodes[1].id);
 localStorage.setItem("dayMemory",JSON.stringify(memoryDailyCalendar));
-
+localStorage.setItem("htmlEl",JSON.stringify(htmlElementCalendar));
 });
 
+
+var contentMemory = JSON.parse(localStorage.getItem("dayMemory"));
+var htmlMemory = JSON.parse(localStorage.getItem("htmlEl"));
+//console.log(contentMemory);
+
+$( document ).ready(function() {
+  for (c = 0; c < memoryDailyCalendar.length; c++){
+    var htmlMemory = JSON.parse(localStorage.getItem("htmlEl"));
+    var contentMemory = JSON.parse(localStorage.getItem("dayMemory"));
+    //htmlMemory[c].text(contentMemory);
+    console.log ('s');
+  }
+  console.log('ready');
+});
 
 
   
