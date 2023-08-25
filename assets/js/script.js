@@ -66,23 +66,22 @@ $(function () {
     rowdiv.append(textArea);
     buttons.addClass('btn saveBtn col-2 col-md-1');
     buttons.attr('aria-label', 'save');
-    //buttons.attr('id', 'buttonN'+i)
     buttons.html('<i class="fas fa-save" aria-hidden="true"></i>');
     rowdiv.append(buttons);
 
-    var row = $('.time-block');
-    if (currentHour == hoursCalendarDay[i]){
 
+
+    if (currentHour == hoursCalendarDay[i]){
       var hourCurr = $('#hour-'+i);
       hourCurr.addClass('present');
-      hourCurr.children('textarea').text('CurrentHour');    
+      hourCurr.children('textarea').text('CurrentHour');
+      var lastHour = currentHour-1;
+      var hourCurrPast = $('#hour-'+hoursCalendarDay.indexOf(lastHour.toString()));
+      hourCurrPast.children('textarea').text('Event that already happened');  
     } if (currentHour > hoursCalendarDay[i]) {
       var hourCurr = $('#hour-'+i);
-      var hourCurrPast = $('#hour-'+(i));
       hourCurr.addClass('past');
-      hourCurrPast.children('textarea').text('Event that already happened');  
     } if (currentHour < hoursCalendarDay[i] ){
- 
       var hourCurr = $('#hour-'+i);
       hourCurr.addClass('future');      
     }
@@ -90,21 +89,21 @@ $(function () {
   }
 
 
-  var memoryDailyCalendar = [];
-  var htmlElementCalendar = [];
+
+
+  var memoryDailyCalendar = {
+    text: []
+  };
+  var htmlElementCalendar = {
+    element: []
+  };
 
 
 
 $('.saveBtn').on('click', function(event){
-//  event.preventDefault();
 
-  //var t1 = $('')
-  //var textDivs = [t1,t2,t3,t4,t5,t6,t7,t8,t9]
-//console.log(event.target.attributes.id.nodeValue);
-//console.log(event.target.parentNode.childNodes[1].value);
-//if(event.target.attributes.id.nodeValue)
-memoryDailyCalendar.push(event.target.parentNode.childNodes[1].value);
-htmlElementCalendar.push(event.target.parentNode.childNodes[1].id);
+memoryDailyCalendar.text.push(event.target.parentNode.childNodes[1].value);
+htmlElementCalendar.element.push(event.target.parentNode.childNodes[1].id);
 localStorage.setItem("dayMemory",JSON.stringify(memoryDailyCalendar));
 localStorage.setItem("htmlEl",JSON.stringify(htmlElementCalendar));
 });
@@ -117,14 +116,14 @@ var htmlMemory = JSON.parse(localStorage.getItem("htmlEl"));
 $( document ).ready(function() {
   var htmlMemory = JSON.parse(localStorage.getItem("htmlEl"));
   var contentMemory = JSON.parse(localStorage.getItem("dayMemory"));
-  memoryDailyCalendar.push(contentMemory);
-  htmlElementCalendar.push(htmlMemory);
+  //memoryDailyCalendar.push(contentMemory);
+  //htmlElementCalendar.push(htmlMemory);
   for (c = 0; c < 8; c++){
-    $(htmlMemory[c]).text(contentMemory[c]);
-    console.log( $(htmlMemory[c]).text(contentMemory[c]));
+    ///htmlMemory[c].text(contentMemory[c]);
+    //console.log( $(htmlMemory[c]).text(contentMemory[c]));
 
   }
-  console.log('ready');
+  //console.log('ready');
 });
 
 
