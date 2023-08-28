@@ -102,6 +102,15 @@ $(function () {
 
 $('.saveBtn').on('click', function(event){
 
+  var htmlMemory = JSON.parse(localStorage.getItem("htmlEl"));
+  var contentMemory = JSON.parse(localStorage.getItem("dayMemory"));
+
+  for (c = 0; c < 8; c++){
+    //var items =  $("#"+htmlMemory.element[c])
+    //console.log(items);
+    //items.text(contentMemory.text[c]);
+  }
+
 memoryDailyCalendar.text.push(event.target.parentNode.childNodes[1].value);
 htmlElementCalendar.element.push(event.target.parentNode.childNodes[1].id);
 localStorage.setItem("dayMemory",JSON.stringify(memoryDailyCalendar));
@@ -109,29 +118,18 @@ localStorage.setItem("htmlEl",JSON.stringify(htmlElementCalendar));
 });
 
 
-var contentMemory = JSON.parse(localStorage.getItem("dayMemory"));
-var htmlMemory = JSON.parse(localStorage.getItem("htmlEl"));
+
 //console.log(contentMemory);
 
 $( document ).ready(function() {
   var htmlMemory = JSON.parse(localStorage.getItem("htmlEl"));
   var contentMemory = JSON.parse(localStorage.getItem("dayMemory"));
-  //memoryDailyCalendar.push(contentMemory);
-  //htmlElementCalendar.push(htmlMemory);
-  //console.log(htmlMemory.element[0]);
-  //console.log(contentMemory);
-  var localHours = [];
   var agenda = $(htmlMemory.element.length);
-  //console.log( agenda);
+
   for (c = 0; c < 8; c++){
-    //htmlMemory[c].text(contentMemory[c]);
    var items =  $("#"+htmlMemory.element[c])
    console.log(items);
    items.text(contentMemory.text[c]);
-
-
-    //console.log(agenda);
-
 
   }
   //console.log('ready');
