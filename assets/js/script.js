@@ -118,9 +118,20 @@ $( document ).ready(function() {
   var contentMemory = JSON.parse(localStorage.getItem("dayMemory"));
   //memoryDailyCalendar.push(contentMemory);
   //htmlElementCalendar.push(htmlMemory);
+  //console.log(htmlMemory.element[0]);
+  //console.log(contentMemory);
+  var localHours = [];
+  var agenda = $(htmlMemory.element.length);
+  //console.log( agenda);
   for (c = 0; c < 8; c++){
-    ///htmlMemory[c].text(contentMemory[c]);
-    //console.log( $(htmlMemory[c]).text(contentMemory[c]));
+    //htmlMemory[c].text(contentMemory[c]);
+   var items =  $("#"+htmlMemory.element[c])
+   console.log(items);
+   items.text(contentMemory.text[c]);
+
+
+    //console.log(agenda);
+
 
   }
   //console.log('ready');
